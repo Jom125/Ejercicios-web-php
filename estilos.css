@@ -1,0 +1,165 @@
+/* estilos.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --white-glass: rgba(255, 255, 255, 0.75);
+    --dark-text: #1f2937;
+    --light-text: #6b7280;
+    --accent: #2563eb;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Fondo animado moderno */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    padding: 20px;
+}
+
+/* Animación del fondo */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.weather-card {
+    background: var(--white-glass);
+    backdrop-filter: blur(20px); /* Efecto vidrio borroso (Glassmorphism) */
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Cabecera */
+.location {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 5px;
+}
+.location i { color: #e11d48; margin-right: 8px; }
+
+.date-info {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-bottom: 5px;
+}
+
+.live-clock {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-variant-numeric: tabular-nums; /* Números monoespaciados para que no "bailen" */
+}
+
+/* Clima Principal */
+.main-weather {
+    margin: 30px 0;
+    position: relative;
+}
+
+.main-icon {
+    font-size: 6rem;
+    background: -webkit-linear-gradient(#f59e0b, #d97706);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 10px 10px rgba(245, 158, 11, 0.3));
+}
+
+/* Animaciones específicas para iconos */
+.float { animation: floating 3s ease-in-out infinite; }
+.spin-slow { animation: spinning 10s linear infinite; }
+.pulse { animation: pulsing 2s infinite; }
+
+@keyframes floating { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+@keyframes spinning { 100% { transform: rotate(360deg); } }
+@keyframes pulsing { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+.temp-large {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    line-height: 1;
+    margin-top: 10px;
+    letter-spacing: -2px;
+}
+
+.weather-desc {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Grid de Detalles */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.detail-box {
+    background: rgba(255,255,255, 0.5);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.detail-box:hover { background: rgba(255,255,255, 0.9); }
+.detail-box i { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
+.detail-label { font-size: 0.8rem; color: var(--light-text); }
+.detail-value { font-size: 1.1rem; font-weight: 600; color: var(--dark-text); }
+
+/* Pronóstico Futuro */
+.forecast-section {
+    margin-top: 30px;
+    text-align: left;
+}
+.forecast-title { font-size: 1rem; font-weight: 600; margin-bottom: 15px; color: var(--dark-text); border-left: 4px solid var(--accent); padding-left: 10px; }
+
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.forecast-mini {
+    flex: 1;
+    background: white;
+    padding: 10px 5px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.forecast-mini span { font-size: 0.8rem; color: var(--light-text); display: block; }
+.forecast-mini i { margin: 8px 0; font-size: 1.2rem; color: var(--accent); }
+.forecast-mini strong { display: block; color: var(--dark-text); }
+
+/* Error */
+.error-banner { background: #fee2e2; color: #b91c1c; padding: 15px; border-radius: 10px; border: 1px solid #f87171; }
